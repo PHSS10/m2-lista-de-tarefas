@@ -1,0 +1,142 @@
+body{
+    background-color: #ebebeb;
+    font-family: "Roboto";
+    
+}
+.header__content{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    color:#3b5bdb;
+    font-size: 30px;
+    font-weight: 500;
+    
+}
+
+.header__input--search{
+    width:30em;
+    text-align:left;
+    padding:1em;
+    border:none;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    
+}
+
+.form__container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2em;
+    background-color: white;
+    padding:1.5em;
+    margin: 2% 20% 0 20%;
+    border-radius: 5px;
+    font-size: 23px;
+    
+}
+.form__input-container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
+#input_title{
+    width: 40em;
+    max-width:100%;
+    text-align:left;
+    padding:1em;
+    border:none;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    
+}
+
+.form__input--priority--input__box{
+    max-width:100%;
+    width:15em;
+    text-align:center;
+    padding:1em;
+    border:none;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    
+}
+
+.form__button--add-task{
+
+    max-width: 100%;
+    text-align:center;
+    padding:1em;
+    border:none;
+    border-radius: 5px;
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.tasks__container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2em;
+    background-color: white;
+    padding:1.5em;
+    margin: 2% 20% 2% 20%;
+    border-radius: 5px;
+    font-size: 23px;
+}
+.task-info__container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap:15px
+}
+
+.task__item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 7px;
+    padding: 1.5em;
+    background-color: #ebebeb;
+    font-size: 14px;
+    border-radius: 5px;
+    
+
+}
+.span-urgent{
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #e40404;
+   
+}
+.span-important{
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color:#f3a703;
+
+}
+.span-normal{
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #028302;
+}
+.task__button--remove-task svg {
+    width: 15px;
+    height: 15px;
+}
+.task__button--remove-task{
+    border:none;
+}
+
+
+
