@@ -18,7 +18,8 @@ function renderElements(arr){
   for(let i = 0; i < arr.length; i ++){
     resultTitle = arr[i].title;
     resultType = arr[i].type;
-    
+    console.log(resultTitle)
+    console.log(resultType)
     createTaskItem(resultTitle, resultType);
   }
 }
@@ -65,9 +66,6 @@ function createTaskItem(title, type){
   })
   
 }
-
-renderElements(tasks)
-
 const form = document.querySelector(".form__container");
 form.addEventListener("submit", function(event){
   event.preventDefault()
@@ -75,11 +73,13 @@ form.addEventListener("submit", function(event){
   const boxText = document.querySelector("#input_title");
   const boxPrioridades = document.querySelector(".form__input--priority--input__box");
   
-  const newList = {title:boxText.value, type:boxPrioridades.value}
+  const newList = {title:boxText.value, type:boxPrioridades.value.toUpperCase()[0] + boxPrioridades.value.slice(1)}
   tasks.push(newList)
-  
   renderElements(tasks)
 })
+
+renderElements(tasks)
+
 
 
 
