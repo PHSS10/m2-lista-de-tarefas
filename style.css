@@ -130,7 +130,7 @@ body{
     border-radius: 50%;
     background-color: #028302;
 }
-.task__button--remove-task svg {
+.task__button--remove-task img {
     width: 15px;
     height: 15px;
 }
