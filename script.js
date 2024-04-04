@@ -18,8 +18,7 @@ function renderElements(arr){
   for(let i = 0; i < arr.length; i ++){
     resultTitle = arr[i].title;
     resultType = arr[i].type;
-    console.log(resultTitle)
-    console.log(resultType)
+    
     createTaskItem(resultTitle, resultType);
   }
 }
@@ -31,6 +30,7 @@ function createTaskItem(title, type){
   const elementP = document.createElement("p");
   const elementButton = document.createElement("button");
   const elementImg = document.createElement("img");
+  
   const elementUl = document.querySelector(".tasks__list");
   
   elementLi.appendChild(elementDiv);
@@ -64,7 +64,7 @@ function createTaskItem(title, type){
   elementButton.addEventListener("click", function(){
     elementLi.remove()
   })
-  
+
 }
 const form = document.querySelector(".form__container");
 form.addEventListener("submit", function(event){
@@ -73,9 +73,9 @@ form.addEventListener("submit", function(event){
   const boxText = document.querySelector("#input_title");
   const boxPrioridades = document.querySelector(".form__input--priority--input__box");
   
-  const newList = {title:boxText.value, type:boxPrioridades.value.toUpperCase()[0] + boxPrioridades.value.slice(1)}
+  createTaskItem(boxText.value, boxPrioridades.value.toUpperCase()[0] + boxPrioridades.value.slice(1))
+  
   tasks.push(newList)
-  renderElements(tasks)
 })
 
 renderElements(tasks)
