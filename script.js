@@ -16,23 +16,22 @@ function renderElements(arr){
   elementUl.innerHTML= "";
   
   for(let i = 0; i < arr.length; i ++){
-    resultTitle = arr[i].title;
-    resultType = arr[i].type;
+    resultTasks = arr[i]
     
-    createTaskItem(resultTitle, resultType);
+    createTaskItem(resultTasks);
   }
 }
 
-function createTaskItem(title, type){
-  const elementLi = document.createElement("li");
+function createTaskItem(objeto){
   const elementDiv = document.createElement("div");
   const elementSpan = document.createElement("span");
   const elementP = document.createElement("p");
   const elementButton = document.createElement("button");
   const elementImg = document.createElement("img");
-  
   const elementUl = document.querySelector(".tasks__list");
   
+  const elementLi = document.createElement("li");
+  elementUl.appendChild(elementLi)
   elementLi.appendChild(elementDiv);
   elementLi.appendChild(elementSpan);
   elementLi.appendChild(elementP);
@@ -40,8 +39,6 @@ function createTaskItem(title, type){
   elementDiv.appendChild(elementSpan);
   elementDiv.appendChild(elementP);
   elementButton.appendChild(elementImg);
-  elementUl.appendChild(elementLi);
-  
   elementLi.classList.add("task__item");
   elementDiv.classList.add("task-info__container");
   elementSpan.classList.add("task-type");
@@ -49,33 +46,40 @@ function createTaskItem(title, type){
   elementButton.classList.add("task__button--remove-task");
   elementImg.setAttribute("src", "./assets/trash-icon.svg");
   
-  elementP.innerText = title;
+  elementP.innerText = objeto.title;
   
-  if(type == "Urgente"){
+  if(objeto.type == "Urgente"){
     elementSpan.classList.add("span-urgent");
   }
-  else if(type == "Importante"){
+  else if(objeto.type == "Importante"){
     elementSpan.classList.add("span-important");
   }
-  else if(type == "Normal"){
+  else if(objeto.type == "Normal"){
     elementSpan.classList.add("span-normal");
   }
   
   elementButton.addEventListener("click", function(){
-    elementLi.remove()
-  })
+    const foundIndex = tasks.indexOf(objeto);
+    if (foundIndex !== -1) {
+        tasks.splice(foundIndex, 1);
+        renderElements(tasks);
+    }
+});
 
+  return elementLi
 }
+
 const form = document.querySelector(".form__container");
 form.addEventListener("submit", function(event){
   event.preventDefault()
   
-  const boxText = document.querySelector("#input_title");
-  const boxPrioridades = document.querySelector(".form__input--priority--input__box");
-  
-  createTaskItem(boxText.value, boxPrioridades.value.toUpperCase()[0] + boxPrioridades.value.slice(1))
-  
+  const boxText = document.querySelector("#input_title").value;
+  const boxPrioridades = document.querySelector(".form__input--priority--input__box").value;
+  const newList = {title:boxText, type:boxPrioridades.toUpperCase()[0] + boxPrioridades.slice(1)};
+
   tasks.push(newList)
+  renderElements(tasks);
+  
 })
 
 renderElements(tasks)
