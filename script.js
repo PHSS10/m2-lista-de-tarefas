@@ -1,14 +1,5 @@
-const tasks = [
-  {title: "Comprar comida para o gato", type: "Urgente"},
-  {title: "Consertar Computador", type: "Importante"},
-  {title: "Beber água", type: "Normal"},
-  {title: "Enviar relatório trimestral", type: "Importante"},
-  {title: "Fazer exercícios físicos", type: "Normal"},
-  {title: "Agendar consulta médica", type: "Urgente"},
-  {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
-  {title: "Limpar a despensa", type: "Importante"},
-  {title: "Pagar a conta de energia", type: "Urgente"},
-  {title: "Assistir a um documentário interessante", type: "Normal"},
+let tasks = [
+  
 ];
 
 function renderElements(arr){
@@ -56,16 +47,17 @@ function createTaskItem(objeto){
   }
   else if(objeto.type == "Normal"){
     elementSpan.classList.add("span-normal");
+
   }
   
   elementButton.addEventListener("click", function(){
     const foundIndex = tasks.indexOf(objeto);
     if (foundIndex !== -1) {
-        tasks.splice(foundIndex, 1);
-        renderElements(tasks);
+      tasks.splice(foundIndex, 1);
+      renderElements(tasks);
     }
-});
-
+  });
+ 
   return elementLi
 }
 
@@ -76,13 +68,25 @@ form.addEventListener("submit", function(event){
   const boxText = document.querySelector("#input_title").value;
   const boxPrioridades = document.querySelector(".form__input--priority--input__box").value;
   const newList = {title:boxText, type:boxPrioridades.toUpperCase()[0] + boxPrioridades.slice(1)};
-
+  
   tasks.push(newList)
+  localStorage.setItem("listaTarefas", JSON.stringify(tasks))
   renderElements(tasks);
+  
   
 })
 
-renderElements(tasks)
+function recarregarTarefa(){
+  const tarefaLocalStorage = localStorage.getItem("listaTarefas")
+  if(tarefaLocalStorage){
+    tasks = JSON.parse(tarefaLocalStorage)
+  }
+  renderElements(tasks)
+}
+
+recarregarTarefa();
+
+
 
 
 
